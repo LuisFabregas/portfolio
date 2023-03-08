@@ -1,0 +1,215 @@
+{% load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Luis Fabregas</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Animate -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href ="{% static 'css/cv.css'%}">
+      <!-- Scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/e3f8bc3dc0.js" crossorigin="anonymous"></script>
+    <script language="JavaScript" type="text/javascript" src="{% static 'js/cv.js' %}"></script>
+    <!-- <script language="JavaScript" type="text/javascript" src="{%static 'jquery-3.5.1.min.js' %}"></script> -->
+
+
+  
+
+    <main role="main">
+      <body>
+        <header>
+          <h1 class="logo">Luis Fabregas</h1>
+          <input type="checkbox" class="nav-toggle" id="nav-toggle">
+          <nav>
+            <ul>
+              <li><a href="{%url 'portfolio:home'%}">Home</a></li>
+              <li><a href="{%url 'portfolio:home'%}#Projects">Projects</a></li>
+              <li><a href="{%url 'cv:cv'%}">CV</a></li>
+              <li><a href="{%url 'portfolio:home'%}#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+          </label>
+        </header>
+        <section class="portfolio-block-intro">
+          <div class="profile-page">
+            <div class="wrapper">
+              <div class="page-header page-header-small">
+                <div class="page-header-image" data-parallax="true"></div>
+                <div class="container">
+                  <div class="content-center">
+                    <div class="cc-profile-image"><img src="/media/about/profile.jpg" alt="Image"/></div>
+                    <div class="h2 title">Luis Fabregas</div>
+                    <p class="category text-white">Web Developer, Electrical Engineer,  Computer Scientist</p><a class="btn btn-primary smooth-scroll mr-2" href="{%url 'portfolio:home'%}#contact">Hire Me</a><a class="btn btn-primary" href="#" >Download CV</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <section id="resume" name="resume" >
+            <!--EDUCATION DESCRIPTION -->
+            <div class="container desc">
+                <div class="row">
+          
+                  <div class="col-lg-2 col-lg-offset-1">
+                    <h5><b>HIGHLIGHTS <br> of QUALIFICATIONS</h5></b>
+                  </div>
+                  <div class="col-lg-8">
+                    {% for point in qualifications %}
+                    <p>
+                        {{point.points|safe}}
+                  </p>
+                  {% endfor %}
+                  </div>
+          
+                </div>
+                <!--/.row -->
+                <br>
+                <hr>
+              </div>
+              <!--/.container -->
+
+            <div class="container desc">
+              <div class="row">
+                {% for school in education %}
+                {%if forloop.first%}
+                <div class="col-lg-2 col-lg-offset-1">
+                  <h5><b>EDUCATION</b></h5>
+                </div>
+                {%else%}
+                <div class="col-lg-2 col-lg-offset-1"></div>
+                {% endif %}
+                <div class="col-lg-6">
+                  <p>
+                    <t>{{school.program}}</t><br/>{{school.university}}
+                    {{school.acheivements|safe}}
+                  
+                </p>
+                </div>
+                <div class="col-lg-3">
+                  <p>
+                    <sm>{{school.graduation_date}}</sm><br/>
+                    <imp>
+                      <sm>IN PROGRESS</sm>
+                    </imp>
+                  </p>
+                </div>
+                {% endfor %}
+        
+              </div>
+              <!--/.row -->
+              <br>
+              <hr>
+            </div>
+            <!--/.container -->
+         
+        
+        
+          <!--WORK DESCRIPTION -->
+          <div class="container desc">
+            <div class="row">
+              {% for jobs in work_list %}
+              {%if forloop.first%}
+              <div class="col-lg-2 col-lg-offset-1">
+                <h5><b>WORK EXPERIENCE</b></h5>
+              </div>
+              {%else%}
+              <div class="col-lg-2 col-lg-offset-1"></div>
+              {% endif %}
+              <div class="col-lg-6">
+                <p>
+                  <t><b>{{jobs.work_title}}</b></t>
+                </p>
+                <p>
+                  <more>{{jobs.work_description|safe}}</more>
+                </p>
+              </div>
+              <div class="col-lg-3">
+                <p>
+                  <sm>{{jobs.work_date_location}}</sm>
+                </p>
+              </div>
+              {% endfor %}
+            </div>
+            <!--/.row -->
+            <br>
+            <hr>
+          </div>
+          <!--/.container -->
+        
+        
+          <!--AWARDS DESCRIPTION -->
+          <div class="container desc">
+            <div class="row">
+              {% for project in project_list %}
+              {%if forloop.first%}
+              <div class="col-lg-2 col-lg-offset-1">
+                <h5><b>PROJECTS</b></h5>
+              </div>
+              {%else%}
+              <div class="col-lg-2 col-lg-offset-1"></div>
+              {% endif %}
+              <div class="col-lg-6 ">
+                <p>
+                  <t><b>{{project.project_title}}</b></t><br/> {{project.project_description|safe}} <br/>
+                </p>
+              </div>
+              <div class="col-lg-3">
+                <p>
+                  <sm>{{project.project_date}}</sm>
+                </p>
+              </div>
+             
+              {% endfor %}
+            </div>
+            <!--/.row -->
+            <br>
+            <hr>
+          </div>
+          <!--/.container -->
+          <div class="container desc">
+            <div class="row">
+              <div class="col-lg-2 col-lg-offset-1">
+                <h5><b>SKILLS</b></h5>
+              </div>
+              <div class="col-lg-8">
+                <br>
+                {% for skill in skills %}
+                <p>
+                  <b>{{skill.skill_title}}</b>
+                    {{skill.skill_list|safe}}
+              </p>
+              {% endfor %}
+              </div>
+      
+            </div>
+            <!--/.row -->
+            <br>
+            <hr>
+          </div>
+          <!--/.container -->
+        </section>
+      </body>
+    </main>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+</html>
