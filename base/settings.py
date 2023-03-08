@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2sba7u9w=rwm!8*i(ldt9#bsb5f0&f71@_2u90auc&x)l5ffg1'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -72,10 +72,10 @@ INSTALLED_APPS = [
 
 ]
 
-AWS_STORAGE_BUCKET_NAME = 'django-portfolio-luis-1'
-AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
-AWS_ACCESS_KEY_ID = 'AKIAQP3CDCR3HO5VKVT5'
-AWS_SECRET_ACCESS_KEY = '+4Kh9iiDoG3QdD17+ZW6846B9pSOJXFZzN0csQfi'
+AWS_STORAGE_BUCKET_NAME = ''
+AWS_S3_REGION_NAME = ''  # e.g. us-east-2
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_ACL = None
